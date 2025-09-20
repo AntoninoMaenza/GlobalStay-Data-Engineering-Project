@@ -97,7 +97,7 @@ README.md # Documentazione principale del progetto
   ![Gold KPI Dashboard](images/kpi_dashboard_2.png)
 
 - **Report HTML:**  
-  [Apri report](reports/globalstay_report.html)
+  [Apri report](reports/final_report.html)
 
 
 ---
