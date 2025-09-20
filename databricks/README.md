@@ -61,10 +61,10 @@ Il flusso prevede i seguenti livelli:
 
    Configurare un Job con 4 task:
 
-    * **Bronze** (pipeline) → esegue `bronze.py`  
-    * **Silver** (pipeline) → esegue `silver.py`  
-    * **Gold** (pipeline) → esegue `gold.py`  
-    * **ML** (script) → esegue `ml.py` (dipendente dal task *silver*)
+   * **Bronze** (pipeline DLT) → esegue `bronze.py`  
+   * **Silver** (pipeline DLT) → esegue `silver.py`  
+   * **Gold** (pipeline DLT) → esegue `gold.py`  
+   * **ML** (script) → esegue `ml.py` (dipendente dal task *Silver*)
 
 4. **Dashboard**
 
@@ -116,7 +116,7 @@ La dashboard costruita in Databricks si basa sul contenuto delle tabelle **Gold*
 1. **Daily Bookings Trend** *(line chart)*
 
    * Mostra l’andamento giornaliero delle prenotazioni e dei ricavi.
-   * Colonne utilizzate: `date`, `bookings_count`, `gross_revenue`.
+   * Colonne utilizzate: `date`, `bookings_count`.
    * **Filtro**: `date`.
 
 2. **Cancellation Rate by Source** *(bar chart)*
@@ -138,13 +138,13 @@ La dashboard costruita in Databricks si basa sul contenuto delle tabelle **Gold*
 5. **Overbooking Alerts** *(table)*
 
    * Elenco delle prenotazioni con camere sovrapposte.
-   * Colonne utilizzate: `room_id`, `booking_id_1`, `booking_id_2`.
+   * Colonne utilizzate: `room_id`, `booking_id_1`, `booking_id_2`, `overlaps_start`, `overlaps_end`.
    * **Filtro**: `room_id`.
 
 6. **Predicted Price** *(scatter plot)*
 
    * Visualizza i valori previsti dal modello di regressione.
-   * Colonne utilizzate: `predicted_price` + variabili input del modello.
+   * Colonne utilizzate: `predicted_price`, `actual_price`.
 
 -----
 
