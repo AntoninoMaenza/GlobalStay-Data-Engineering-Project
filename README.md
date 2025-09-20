@@ -34,7 +34,7 @@ Entrambe le versioni seguono lo schema architetturale:
 /airflow/ # Implementazione con Apache Airflow
 ├── dags/
 │ └── globalstay/
-│ ├── init.py 
+│ ├── __init__.py 
 │ ├── dag_globalstay_etl.py 
 │ ├── bronze.py
 │ ├── silver.py 
