@@ -1,0 +1,896 @@
+{
+  "datasets": [
+    {
+      "name": "9dfd9848",
+      "displayName": "daily_revenue",
+      "queryLines": [
+        "SELECT * FROM globalstay.gold.daily_revenue ORDER BY\r\n",
+        "  date;"
+      ]
+    },
+    {
+      "name": "45fe81b1",
+      "displayName": "cancellation_rate",
+      "queryLines": [
+        "SELECT * FROM globalstay.gold.cancellation_rate"
+      ]
+    },
+    {
+      "name": "60139c2f",
+      "displayName": "collection_rate",
+      "queryLines": [
+        "SELECT * FROM globalstay.gold.collection_rate"
+      ]
+    },
+    {
+      "name": "e8be3303",
+      "displayName": "customer_value",
+      "queryLines": [
+        "SELECT * FROM globalstay.gold.customer_value"
+      ]
+    },
+    {
+      "name": "78b03b64",
+      "displayName": "overbooking_alerts",
+      "queryLines": [
+        "SELECT * FROM globalstay.gold.overbooking_alerts"
+      ]
+    },
+    {
+      "name": "6b5500b1",
+      "displayName": "predicted_prices",
+      "queryLines": [
+        "SELECT * FROM globalstay.gold.predicted_prices"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "8e26f743",
+      "displayName": "Untitled page",
+      "layout": [
+        {
+          "widget": {
+            "name": "e6a2d48c",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9dfd9848",
+                  "fields": [
+                    {
+                      "name": "daily(date)",
+                      "expression": "DATE_TRUNC(\"DAY\", `date`)"
+                    },
+                    {
+                      "name": "sum(bookings_count)",
+                      "expression": "SUM(`bookings_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "daily(date)",
+                  "scale": {
+                    "type": "temporal"
+                  },
+                  "displayName": "date"
+                },
+                "y": {
+                  "fieldName": "sum(bookings_count)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Sum of bookings_count"
+                },
+                "label": {
+                  "show": false
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "showDescription": false,
+                "title": "Daily Bookings Trend"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 1
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 3,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "0c330243",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "45fe81b1",
+                  "fields": [
+                    {
+                      "name": "source",
+                      "expression": "`source`"
+                    },
+                    {
+                      "name": "cancellation_rate_pct",
+                      "expression": "`cancellation_rate_pct`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "source",
+                  "scale": {
+                    "type": "categorical"
+                  },
+                  "displayName": "source"
+                },
+                "y": {
+                  "fieldName": "cancellation_rate_pct",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "cancellation_rate_pct"
+                },
+                "color": {
+                  "fieldName": "source",
+                  "scale": {
+                    "type": "categorical",
+                    "mappings": [
+                      {
+                        "value": "mobile",
+                        "color": "#36454F"
+                      },
+                      {
+                        "value": "expedia",
+                        "color": "#FFD700"
+                      },
+                      {
+                        "value": "booking.com",
+                        "color": {
+                          "themeColorType": "visualizationColors",
+                          "position": 1
+                        }
+                      },
+                      {
+                        "value": "walk_in",
+                        "color": "#228B22"
+                      },
+                      {
+                        "value": "web",
+                        "color": {
+                          "themeColorType": "fontColor"
+                        }
+                      }
+                    ]
+                  },
+                  "displayName": "source"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Cancellation Rate by Source"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 0,
+            "width": 3,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "2f96cba2",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "60139c2f",
+                  "fields": [
+                    {
+                      "name": "hotel_id",
+                      "expression": "`hotel_id`"
+                    },
+                    {
+                      "name": "collection_rate",
+                      "expression": "`collection_rate`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "collection_rate",
+                  "displayName": "collection_rate"
+                },
+                "target": {
+                  "fieldName": "hotel_id",
+                  "displayName": "hotel_id"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Collection_rate"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 8,
+            "width": 2,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "d97bb004",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "78b03b64",
+                  "fields": [
+                    {
+                      "name": "room_id",
+                      "expression": "`room_id`"
+                    },
+                    {
+                      "name": "booking_id_1",
+                      "expression": "`booking_id_1`"
+                    },
+                    {
+                      "name": "booking_id_2",
+                      "expression": "`booking_id_2`"
+                    },
+                    {
+                      "name": "overlap_start",
+                      "expression": "`overlap_start`"
+                    },
+                    {
+                      "name": "overlap_end",
+                      "expression": "`overlap_end`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "room_id",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "string",
+                    "displayAs": "string",
+                    "visible": true,
+                    "order": 100000,
+                    "title": "room_id",
+                    "allowSearch": false,
+                    "alignContent": "left",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false,
+                    "cellFormat": {
+                      "default": {
+                        "foregroundColor": null
+                      },
+                      "rules": []
+                    },
+                    "displayName": "room_id"
+                  },
+                  {
+                    "fieldName": "booking_id_1",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "string",
+                    "displayAs": "string",
+                    "visible": true,
+                    "order": 100001,
+                    "title": "booking_id_1",
+                    "allowSearch": false,
+                    "alignContent": "left",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false,
+                    "displayName": "booking_id_1"
+                  },
+                  {
+                    "fieldName": "booking_id_2",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "string",
+                    "displayAs": "string",
+                    "visible": true,
+                    "order": 100002,
+                    "title": "booking_id_2",
+                    "allowSearch": false,
+                    "alignContent": "left",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false,
+                    "displayName": "booking_id_2"
+                  },
+                  {
+                    "fieldName": "overlap_start",
+                    "dateTimeFormat": "DD/MM/YYYY",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "date",
+                    "displayAs": "datetime",
+                    "visible": true,
+                    "order": 100003,
+                    "title": "overlap_start",
+                    "allowSearch": false,
+                    "alignContent": "right",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false,
+                    "displayName": "overlap_start"
+                  },
+                  {
+                    "fieldName": "overlap_end",
+                    "dateTimeFormat": "DD/MM/YYYY",
+                    "booleanValues": [
+                      "false",
+                      "true"
+                    ],
+                    "imageUrlTemplate": "{{ @ }}",
+                    "imageTitleTemplate": "{{ @ }}",
+                    "imageWidth": "",
+                    "imageHeight": "",
+                    "linkUrlTemplate": "{{ @ }}",
+                    "linkTextTemplate": "{{ @ }}",
+                    "linkTitleTemplate": "{{ @ }}",
+                    "linkOpenInNewTab": true,
+                    "type": "date",
+                    "displayAs": "datetime",
+                    "visible": true,
+                    "order": 100004,
+                    "title": "overlap_end",
+                    "allowSearch": false,
+                    "alignContent": "right",
+                    "allowHTML": false,
+                    "highlightLinks": false,
+                    "useMonospaceFont": false,
+                    "preserveWhitespace": false,
+                    "displayName": "overlap_end"
+                  }
+                ]
+              },
+              "invisibleColumns": [],
+              "allowHTMLByDefault": false,
+              "itemsPerPage": 25,
+              "paginationSize": "default",
+              "condensed": true,
+              "withRowNumber": false,
+              "frame": {
+                "showTitle": true,
+                "title": "Overbooking allert"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 12,
+            "width": 3,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "4281f7c6",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "e8be3303",
+                  "fields": [
+                    {
+                      "name": "bookings_count",
+                      "expression": "`bookings_count`"
+                    },
+                    {
+                      "name": "min(avg_ticket)",
+                      "expression": "MIN(`avg_ticket`)"
+                    },
+                    {
+                      "name": "q1(avg_ticket)",
+                      "expression": "PERCENTILE(`avg_ticket`, 0.25)"
+                    },
+                    {
+                      "name": "median(avg_ticket)",
+                      "expression": "MEDIAN(`avg_ticket`)"
+                    },
+                    {
+                      "name": "q3(avg_ticket)",
+                      "expression": "PERCENTILE(`avg_ticket`, 0.75)"
+                    },
+                    {
+                      "name": "max(avg_ticket)",
+                      "expression": "MAX(`avg_ticket`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "box",
+              "encodings": {
+                "x": {
+                  "fieldName": "bookings_count",
+                  "scale": {
+                    "type": "categorical"
+                  },
+                  "displayName": "bookings_count"
+                },
+                "y": {
+                  "whiskerStart": {
+                    "fieldName": "min(avg_ticket)",
+                    "displayName": "Minimum avg_ticket"
+                  },
+                  "boxStart": {
+                    "fieldName": "q1(avg_ticket)",
+                    "displayName": "First Quartile of avg_ticket"
+                  },
+                  "boxMid": {
+                    "fieldName": "median(avg_ticket)",
+                    "displayName": "Median of avg_ticket"
+                  },
+                  "boxEnd": {
+                    "fieldName": "q3(avg_ticket)",
+                    "displayName": "Third Quartile of avg_ticket"
+                  },
+                  "whiskerEnd": {
+                    "fieldName": "max(avg_ticket)",
+                    "displayName": "Maximum avg_ticket"
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Bookings vs. Average Ticket",
+                "headerAlignment": "left"
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 5,
+            "width": 4,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "6af985a2",
+            "queries": [
+              {
+                "name": "dashboards/01f0909f5be51400b6eb3b665dc0eaf4/datasets/01f090a27ba0111eabc03a0b4c6d23ff_date",
+                "query": {
+                  "datasetName": "9dfd9848",
+                  "fields": [
+                    {
+                      "name": "date",
+                      "expression": "`date`"
+                    },
+                    {
+                      "name": "date_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-date-range-picker",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "date",
+                    "displayName": "date",
+                    "queryName": "dashboards/01f0909f5be51400b6eb3b665dc0eaf4/datasets/01f090a27ba0111eabc03a0b4c6d23ff_date"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "aad43f95",
+            "queries": [
+              {
+                "name": "dashboards/01f0909f5be51400b6eb3b665dc0eaf4/datasets/01f090a4b2721c698c3375fb5fa26519_hotel_id",
+                "query": {
+                  "datasetName": "60139c2f",
+                  "fields": [
+                    {
+                      "name": "hotel_id",
+                      "expression": "`hotel_id`"
+                    },
+                    {
+                      "name": "hotel_id_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "hotel_id",
+                    "displayName": "hotel_id",
+                    "queryName": "dashboards/01f0909f5be51400b6eb3b665dc0eaf4/datasets/01f090a4b2721c698c3375fb5fa26519_hotel_id"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "9e75d40b",
+            "queries": [
+              {
+                "name": "dashboards/01f0909f5be51400b6eb3b665dc0eaf4/datasets/01f093de304e16ffb58ebc16fc800253_room_id",
+                "query": {
+                  "datasetName": "78b03b64",
+                  "fields": [
+                    {
+                      "name": "room_id",
+                      "expression": "`room_id`"
+                    },
+                    {
+                      "name": "room_id_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "room_id",
+                    "displayName": "room_id",
+                    "queryName": "dashboards/01f0909f5be51400b6eb3b665dc0eaf4/datasets/01f093de304e16ffb58ebc16fc800253_room_id"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 7,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "412c593d",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "6b5500b1",
+                  "fields": [
+                    {
+                      "name": "booking_id",
+                      "expression": "`booking_id`"
+                    },
+                    {
+                      "name": "actual_price",
+                      "expression": "`actual_price`"
+                    },
+                    {
+                      "name": "predicted_price",
+                      "expression": "`predicted_price`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "scatter",
+              "encodings": {
+                "x": {
+                  "fieldName": "actual_price",
+                  "scale": {
+                    "type": "quantitative",
+                    "domain": {
+                      "max": 1600
+                    }
+                  },
+                  "displayName": "actual_price"
+                },
+                "y": {
+                  "fieldName": "predicted_price",
+                  "scale": {
+                    "type": "quantitative",
+                    "domain": {
+                      "max": 1600
+                    }
+                  },
+                  "displayName": "predicted_price"
+                },
+                "extra": [
+                  {
+                    "fieldName": "booking_id",
+                    "displayName": "booking_id"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Predicted Price"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 12,
+            "width": 3,
+            "height": 8
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "71bc5660",
+      "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "60ec6898",
+            "queries": [
+              {
+                "name": "dashboards/01f095f65cf1145287d85afd4b1d9e14/datasets/01f095f65cf11bfbb50458b3190a5ce5_date",
+                "query": {
+                  "datasetName": "9dfd9848",
+                  "fields": [
+                    {
+                      "name": "date",
+                      "expression": "`date`"
+                    },
+                    {
+                      "name": "date_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-date-range-picker",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "date",
+                    "displayName": "date",
+                    "queryName": "dashboards/01f095f65cf1145287d85afd4b1d9e14/datasets/01f095f65cf11bfbb50458b3190a5ce5_date"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    }
+  }
+}
